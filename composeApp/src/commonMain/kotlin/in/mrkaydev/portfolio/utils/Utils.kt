@@ -32,8 +32,8 @@ object Utils {
     }
     fun getFontWeightElseNormal(fontWeight: String?) : FontWeight {
         return when(fontWeight) {
-            "light"-> return FontWeight.Light
-            "normal"-> return FontWeight.Normal
+            "light","thin"-> return FontWeight.Light
+            "normal","regular"-> return FontWeight.Normal
             "medium"-> return FontWeight.Medium
             "bold"-> return FontWeight.Bold
             "semiBold"-> return FontWeight.SemiBold
