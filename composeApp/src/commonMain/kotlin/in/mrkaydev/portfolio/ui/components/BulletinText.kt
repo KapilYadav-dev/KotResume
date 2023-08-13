@@ -6,22 +6,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import `in`.mrkaydev.portfolio.data.MiddleBulletinRowTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.BulletinTextWidgetConfig
 
 @Composable
-fun MiddleBulletinRowText(config: MiddleBulletinRowTextWidgetConfig) {
-    config.apply {
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text(bulletinText)
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    config.firstTextWidgetConfig?.let { BasicText(it) }
-                    config.secondTextWidgetConfig?.let { BasicText(it) }
-                }
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    config.thirdTextWidgetConfig?.let { BasicText(it) }
-                    config.fourthTextWidgetConfig?.let { BasicText(it) }
+fun BulletinText(config: BulletinTextWidgetConfig) {
+    config.textConfigsList?.let {
+        Column {
+            it.forEach { item->
+                Row(modifier = Modifier.fillMaxWidth().padding(start = 32.dp)) {
+                    Text(config.bulletinText)
+                    Spacer(modifier = Modifier.width(16.dp))
+                    BasicText(item)
                 }
             }
         }

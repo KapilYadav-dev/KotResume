@@ -38,3 +38,4 @@ internal fun App() {
 }
 
 internal expect fun openUrl(url: String?)
+internal expect fun showAlert(msg: String?)
