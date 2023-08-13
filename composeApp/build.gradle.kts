@@ -19,6 +19,7 @@ kotlin {
             }
         }
         val commonMain by getting {
+            val ktorVersion = "2.3.2"
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -30,7 +31,10 @@ kotlin {
                 implementation(libs.composeImageLoader)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.insetsx)
-                implementation(libs.ktor.core)
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation(libs.composeIcons.featherIcons)
                 implementation(libs.kotlinx.serialization.json)
             }
