@@ -10,6 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import `in`.mrkaydev.portfolio.theme.AppTheme
+import `in`.mrkaydev.portfolio.ui.screens.Resume
+import `in`.mrkaydev.portfolio.utils.FontLoader
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
 

@@ -1,4 +1,4 @@
-package `in`.mrkaydev.portfolio
+package `in`.mrkaydev.portfolio.networking
 
 import io.ktor.client.*
 import io.ktor.client.plugins.*
