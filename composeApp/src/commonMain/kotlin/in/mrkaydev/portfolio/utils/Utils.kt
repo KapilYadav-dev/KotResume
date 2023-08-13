@@ -3,6 +3,7 @@ package `in`.mrkaydev.portfolio.utils
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 
@@ -38,6 +39,14 @@ object Utils {
             "bold"-> return FontWeight.Bold
             "semiBold"-> return FontWeight.SemiBold
             else -> FontWeight.Normal
+        }
+    }
+
+    fun getFontStyleElseNormal(fontStyle:String?): FontStyle {
+        return when(fontStyle) {
+            "italic","italics"-> return FontStyle.Italic
+            "normal"-> return FontStyle.Normal
+            else -> FontStyle.Normal
         }
     }
 }

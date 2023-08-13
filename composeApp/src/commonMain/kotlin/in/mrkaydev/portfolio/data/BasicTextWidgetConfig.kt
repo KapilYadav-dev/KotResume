@@ -19,6 +19,7 @@ data class BasicTextWidgetConfig(
     data class TextConfig(
         val color: String? = null,
         val fontWeight: String? = null,
+        val fontStyle:String?=null,
         val textSize:Int? = null
     )
 }

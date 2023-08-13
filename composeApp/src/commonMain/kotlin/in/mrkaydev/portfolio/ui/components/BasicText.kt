@@ -15,6 +15,7 @@ import `in`.mrkaydev.portfolio.data.BasicTextWidgetConfig
 import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils
+import `in`.mrkaydev.portfolio.utils.Utils.getFontStyleElseNormal
 import `in`.mrkaydev.portfolio.utils.Utils.toSp
 
 @Composable
@@ -29,6 +30,7 @@ fun BasicText(config: BasicTextWidgetConfig) {
                     color = Utils.getColorElseBlack(textConfig.color),
                     fontSize = textConfig.textSize?.toSp() ?: 14.sp,
                     fontFamily = FontLoader.Montserrat,
+                    fontStyle = getFontStyleElseNormal(textConfig.fontStyle),
                     onTextLayout = {
                         textLayoutResult = it
                     },
