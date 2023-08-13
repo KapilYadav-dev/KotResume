@@ -1,28 +1,46 @@
 package `in`.mrkaydev.portfolio.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
+import compose.icons.FeatherIcons
+import compose.icons.feathericons.Download
+import compose.icons.feathericons.Menu
 import `in`.mrkaydev.portfolio.data.*
+import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.ui.components.*
+import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils.toDp
 
 @Composable
-fun Resume() {
+fun Resume(data: WebsiteData) {
     Box(modifier = Modifier.background(Color(0xff535659)).fillMaxSize()) {
+        Row(modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp).background(Color(0xff333639)), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+            Row {
+                Icon(imageVector = FeatherIcons.Menu, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp), tint = Color.White)
+                Text(data.resumeName, fontWeight = FontWeight.SemiBold, fontFamily = FontLoader.Montserrat, fontSize = 16.sp, color = Color.White)
+            }
+            Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
+        }
         LazyColumn(
             modifier = Modifier.fillMaxWidth(0.45f).fillMaxHeight().background(Color.White)
-                .padding(horizontal = 32.dp, vertical = 24.dp).align(
+                .padding(start = 32.dp, end = 32.dp, top = 80.dp, bottom = 32.dp).align(
                     Alignment.Center
                 )
         ) {
-            items(getResumeItemList()) {
+            items(data.resumeDataList) {
                 when (it.widgetId) {
                     Widgets.BasicTextWidgetId.widgetName -> BasicText(it as BasicTextWidgetConfig)
                     Widgets.RowTextWidgetId.widgetName -> RowText(it as RowTextWidgetConfig)
@@ -316,6 +334,72 @@ fun getResumeItemList() = listOf(
             ),
             BasicTextWidgetConfig(
                 text = "worked on platform task for improving <b>Janky frames.</b>",
+                textConfig = BasicTextWidgetConfig.TextConfig(
+                    textSize = 14,
+                    color = "black",
+                    fontWeight = "normal"
+                )
+            ),
+        )
+    ),
+    SpacerWidgetConfig(8),
+    MiddleBulletinRowTextWidgetConfig(
+        bulletinText = "•",
+        firstTextWidgetConfig = BasicTextWidgetConfig(
+            text = "Atom EI",
+            textConfig = BasicTextWidgetConfig.TextConfig(
+                textSize = 16,
+                color = "black",
+                fontWeight = "bold"
+            )
+        ),
+        secondTextWidgetConfig = BasicTextWidgetConfig(
+            text = "Gurugram, IN (Remote)",
+            textConfig = BasicTextWidgetConfig.TextConfig(
+                textSize = 16,
+                color = "black",
+                fontWeight = "normal"
+            )
+        ),
+        thirdTextWidgetConfig = BasicTextWidgetConfig(
+            text = "Android Intern",
+            textConfig = BasicTextWidgetConfig.TextConfig(
+                textSize = 14,
+                color = "black",
+                fontWeight = "normal",
+                fontStyle = "italics"
+            )
+        ),
+        fourthTextWidgetConfig = BasicTextWidgetConfig(
+            text = "June 2022 - Sept 2022",
+            textConfig = BasicTextWidgetConfig.TextConfig(
+                textSize = 14,
+                color = "black",
+                fontWeight = "normal",
+                fontStyle = "italics"
+            )
+        )
+    ),
+    BulletinTextWidgetConfig(
+        textConfigsList = listOf(
+            BasicTextWidgetConfig(
+                text = "<b>Led Personalized Time feature :</b> Added a feature in prod release for Personalized meditation time for making flexible meditation for the user. Bug-free in 1st e2e testing itself.",
+                textConfig = BasicTextWidgetConfig.TextConfig(
+                    textSize = 14,
+                    color = "black",
+                    fontWeight = "normal"
+                )
+            ),
+            BasicTextWidgetConfig(
+                text = "<b>Image similarity algorithm :</b> Worked upon Phash algorithm which converted to a library in kotlin for internal use so that we can achieve Image similarity stable way with more than 85% accuracy.",
+                textConfig = BasicTextWidgetConfig.TextConfig(
+                    textSize = 14,
+                    color = "black",
+                    fontWeight = "normal"
+                )
+            ),
+            BasicTextWidgetConfig(
+                text = "<b>Fixed bug on the production line :</b> Fixed a critical bug which leads to crashing, thus Firebase crashlytics events dropped by 90%.",
                 textConfig = BasicTextWidgetConfig.TextConfig(
                     textSize = 14,
                     color = "black",
