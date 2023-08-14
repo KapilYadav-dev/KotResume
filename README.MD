@@ -4,7 +4,7 @@ This is a resume generator website built using Kotlin Multiplatform (KMP) WebAss
 
 ## Demo 
 
-
+![Image 1](https://raw.githubusercontent.com/KapilYadav-dev/KotResume/main/images/demo.png)
 
 ## Features
 
@@ -58,6 +58,8 @@ Select text styles:
 - else -> FontStyle.Normal
 
 ## Components
+
+![Image 1](https://raw.githubusercontent.com/KapilYadav-dev/KotResume/main/images/understanding.png)
 
 ### BasicTextWidgetConfig
 
