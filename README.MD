@@ -79,7 +79,7 @@ data class BasicTextWidgetConfig(
         val fontStyle: String? = null
     )
 }
-
+```
 - **text**: The text content.
 - **url**: URL associated with the text.
 - **shouldUnderLineUrl**: Whether the URL should be underlined (default: true).
@@ -110,6 +110,7 @@ data class BulletinTextWidgetConfig(
     val startPadding: Int = 32,
     val endPadding: Int = 0
 )
+```
 
 - **thickness**: The thickness of the divider line.
 - **color**: Color of the divider.
@@ -134,6 +135,7 @@ data class MiddleBulletinRowTextWidgetConfig(
     val startPadding: Int = 0,
     val endPadding: Int = 0
 )
+```
 
 - **bulletinText**: The bullet point character (default: "•").
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**, **thirdTextWidgetConfig**, **fourthTextWidgetConfig**: BasicTextWidgetConfig for each element.
@@ -154,6 +156,7 @@ data class RowTextWidgetConfig(
     val startPadding: Int = 0,
     val endPadding: Int = 0
 )
+```
 
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**: BasicTextWidgetConfig for each element.
 - **widgetId**: "RowTextWidgetId"
@@ -172,6 +175,7 @@ data class SpacerWidgetConfig(
      val startPadding: Int = 0,
      val endPadding: Int = 0
 )
+```
 
 - **space**: The amount of spacing in int. ( e.g 32 i.e 32.dp )
 - **widgetId**: "SpacerWidgetId"
