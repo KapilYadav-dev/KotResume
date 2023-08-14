@@ -1,5 +1,6 @@
 package `in`.mrkaydev.portfolio.data
 
+@kotlinx.serialization.Serializable
 data class DividerWidgetConfig(
     val thickness:Int?=null,
     val color:String?=null,

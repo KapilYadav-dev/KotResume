@@ -1,5 +1,6 @@
 package `in`.mrkaydev.portfolio.data
 
+@kotlinx.serialization.Serializable
 data class SpacerWidgetConfig(
     val space:Int?=null,
     override val widgetId: String = Widgets.SpacerWidgetId.widgetName,

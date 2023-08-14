@@ -1,5 +1,6 @@
 package `in`.mrkaydev.portfolio.data
 
+@kotlinx.serialization.Serializable
 sealed class Widgets(val widgetName:String) {
     object BasicTextWidgetId : Widgets("basicText")
     object RowTextWidgetId : Widgets("rowText")
