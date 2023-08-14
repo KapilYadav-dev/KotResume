@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.Dp
 import kotlin.math.min
 
 object Utils {
+
+    const val RESUME_JSON_URL = "https://api.npoint.io/5b610d92313fc4db805c"
     @Composable
     fun Int.toDp() = Dp(this@toDp.toFloat())
 

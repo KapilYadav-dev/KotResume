@@ -14,32 +14,47 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import `in`.mrkaydev.portfolio.data.WebsiteData
+import `in`.mrkaydev.portfolio.networking.httpClient
 import `in`.mrkaydev.portfolio.theme.AppTheme
 import `in`.mrkaydev.portfolio.ui.screens.Resume
-import `in`.mrkaydev.portfolio.ui.screens.getResumeItemList
 import `in`.mrkaydev.portfolio.utils.FontLoader
+import `in`.mrkaydev.portfolio.utils.Utils
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
 internal fun App() {
     var isFontLoaded by rememberSaveable { mutableStateOf(false) }
     var showResume by rememberSaveable { mutableStateOf(false) }
-    val data = WebsiteData("KapilYadav-Resume.pdf","https://d1fdloi71mui9q.cloudfront.net/Pz93R8fISZm11vhLK3Qx_KapilResume.pdf",
-        getResumeItemList()
-    )
+    var data by rememberSaveable { mutableStateOf(WebsiteData()) }
     LaunchedEffect(Unit) {
-        FontLoader.loadFonts()
-        isFontLoaded = true
+        withContext(Dispatchers.Default) {
+            FontLoader.loadFonts()
+            isFontLoaded = true
+        }
+        delay(2.seconds)
+        data = httpClient.get(Utils.RESUME_JSON_URL).body()
     }
     AppTheme {
-        if (isFontLoaded && showResume) Resume(data) else {
+        if (isFontLoaded && showResume) Resume(data) else if (isFontLoaded) {
             Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(modifier = Modifier.size(64.dp).align(Alignment.Center), color = Color.Blue)
-                Text("made by mrkaydev and powered by Compose multiplatform <3", fontSize = 16.sp, fontFamily = FontLoader.Montserrat, modifier = Modifier.padding(32.dp).align(Alignment.BottomCenter))
+                CircularProgressIndicator(
+                    modifier = Modifier.size(64.dp).align(Alignment.Center),
+                    color = Color.Blue
+                )
+                Text(
+                    "made by mrkaydev and powered by Compose multiplatform <3",
+                    fontSize = 16.sp,
+                    fontFamily = FontLoader.Montserrat,
+                    modifier = Modifier.padding(32.dp).align(Alignment.BottomCenter)
+                )
             }
             LaunchedEffect(Unit) {
-                delay(5.seconds)
+                delay(2.seconds)
                 showResume = true
             }
         }
@@ -49,4 +64,4 @@ internal fun App() {
 internal expect fun openUrl(url: String?)
 internal expect fun showAlert(msg: String?)
 internal expect fun String.logger()
-internal expect fun getWindowDimen():Pair<Int,Int>
+internal expect fun getWindowDimen(): Pair<Int, Int>

@@ -24,6 +24,10 @@ import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.ui.components.*
 import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils.toDp
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 @Composable
 fun Resume(data: WebsiteData) {
@@ -35,7 +39,7 @@ fun Resume(data: WebsiteData) {
         Row(modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp).background(Color(0xff333639)), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
             Row {
                 Icon(imageVector = FeatherIcons.Menu, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp), tint = Color.White)
-                Text(data.resumeName, fontWeight = FontWeight.SemiBold, fontFamily = FontLoader.Montserrat, fontSize = 16.sp, color = Color.White)
+                Text(data.resumeName.toString(), fontWeight = FontWeight.SemiBold, fontFamily = FontLoader.Montserrat, fontSize = 16.sp, color = Color.White)
             }
             Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
         }
@@ -45,15 +49,31 @@ fun Resume(data: WebsiteData) {
                     Alignment.Center
                 )
         ) {
-            items(data.resumeDataList) {
-                when (it.widgetId) {
-                    Widgets.BasicTextWidgetId.widgetName -> BasicText(it as BasicTextWidgetConfig)
-                    Widgets.RowTextWidgetId.widgetName -> RowText(it as RowTextWidgetConfig)
-                    Widgets.DividerWidgetId.widgetName -> DividerWidget(it as DividerWidgetConfig)
-                    Widgets.MiddleBulletinRowTextWidgetId.widgetName -> MiddleBulletinRowText(it as MiddleBulletinRowTextWidgetConfig)
-                    Widgets.BulletinTextWidgetId.widgetName -> BulletinText(it as BulletinTextWidgetConfig)
+            items(data.resumeDataList?: emptyList()) {
+                val id = it["widgetId"]?.jsonPrimitive?.contentOrNull
+                when (id.toString()) {
+                    Widgets.BasicTextWidgetId.widgetName -> {
+                        val data = Json.decodeFromJsonElement(BasicTextWidgetConfig.serializer(), it)
+                        BasicText(data)
+                    }
+                    Widgets.RowTextWidgetId.widgetName -> {
+                        val data = Json.decodeFromJsonElement(RowTextWidgetConfig.serializer(), it)
+                        RowText(data)
+                    }
+                    Widgets.DividerWidgetId.widgetName -> {
+                        val data = Json.decodeFromJsonElement(DividerWidgetConfig.serializer(), it)
+                        DividerWidget(data)
+                    }
+                    Widgets.MiddleBulletinRowTextWidgetId.widgetName -> {
+                        val data = Json.decodeFromJsonElement(MiddleBulletinRowTextWidgetConfig.serializer(), it)
+                        MiddleBulletinRowText(data)
+                    }
+                    Widgets.BulletinTextWidgetId.widgetName -> {
+                        val data = Json.decodeFromJsonElement(BulletinTextWidgetConfig.serializer(), it)
+                        BulletinText(data)
+                    }
                     Widgets.SpacerWidgetId.widgetName -> {
-                        val config = it as SpacerWidgetConfig
+                        val config = Json.decodeFromJsonElement(SpacerWidgetConfig.serializer(), it)
                         config.space?.toDp()?.let { dp ->
                             Spacer(Modifier.height(dp))
                         }
