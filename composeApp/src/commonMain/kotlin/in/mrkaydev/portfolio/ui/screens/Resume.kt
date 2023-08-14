@@ -19,6 +19,7 @@ import compose.icons.FeatherIcons
 import compose.icons.feathericons.Download
 import compose.icons.feathericons.Menu
 import `in`.mrkaydev.portfolio.data.*
+import `in`.mrkaydev.portfolio.getWindowDimen
 import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.ui.components.*
 import `in`.mrkaydev.portfolio.utils.FontLoader
@@ -26,6 +27,10 @@ import `in`.mrkaydev.portfolio.utils.Utils.toDp
 
 @Composable
 fun Resume(data: WebsiteData) {
+    val width = getWindowDimen().first
+    val height = getWindowDimen().second
+
+    val ratio= if(width<height) 0.8f else 0.45f
     Box(modifier = Modifier.background(Color(0xff535659)).fillMaxSize()) {
         Row(modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp).background(Color(0xff333639)), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
             Row {
@@ -35,7 +40,7 @@ fun Resume(data: WebsiteData) {
             Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
         }
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(0.45f).fillMaxHeight().background(Color.White)
+            modifier = Modifier.fillMaxWidth(ratio).fillMaxHeight().background(Color.White)
                 .padding(start = 32.dp, end = 32.dp, top = 80.dp, bottom = 32.dp).align(
                     Alignment.Center
                 )

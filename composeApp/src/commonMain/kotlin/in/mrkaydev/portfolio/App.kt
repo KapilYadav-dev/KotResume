@@ -23,7 +23,6 @@ import kotlin.time.Duration.Companion.seconds
 
 @Composable
 internal fun App() {
-    var darkTheme by rememberSaveable { mutableStateOf(false) }
     var isFontLoaded by rememberSaveable { mutableStateOf(false) }
     var showResume by rememberSaveable { mutableStateOf(false) }
     val data = WebsiteData("KapilYadav-Resume.pdf","https://d1fdloi71mui9q.cloudfront.net/Pz93R8fISZm11vhLK3Qx_KapilResume.pdf",
@@ -33,11 +32,11 @@ internal fun App() {
         FontLoader.loadFonts()
         isFontLoaded = true
     }
-    AppTheme(useDarkTheme = darkTheme) {
+    AppTheme {
         if (isFontLoaded && showResume) Resume(data) else {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(modifier = Modifier.size(64.dp).align(Alignment.Center), color = Color.Blue)
-                Text("powered by Compose multiplatform <3", fontSize = 16.sp, fontFamily = FontLoader.Montserrat, modifier = Modifier.padding(32.dp).align(Alignment.BottomCenter))
+                Text("made by mrkaydev and powered by Compose multiplatform <3", fontSize = 16.sp, fontFamily = FontLoader.Montserrat, modifier = Modifier.padding(32.dp).align(Alignment.BottomCenter))
             }
             LaunchedEffect(Unit) {
                 delay(5.seconds)
@@ -49,3 +48,5 @@ internal fun App() {
 
 internal expect fun openUrl(url: String?)
 internal expect fun showAlert(msg: String?)
+internal expect fun String.logger()
+internal expect fun getWindowDimen():Pair<Int,Int>
