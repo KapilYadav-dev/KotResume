@@ -187,15 +187,592 @@ data class SpacerWidgetConfig(
 - **widgetId**: "SpacerWidgetId"
 - **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
 
-## Getting Started
+## Example Json 
+
+<details>
+<summary>Click to expand the code for BasicTextWidgetConfig</summary>
+
+```json
+{
+"resumeUrl": "https://d1fdloi71mui9q.cloudfront.net/Pz93R8fISZm11vhLK3Qx_KapilResume.pdf",
+"resumeName": "KapilYadav-Resume.pdf",
+"resumeDataList": [
+{
+"widgetId": "RowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Kapil Yadav",
+"textConfig": {
+"color": "blue",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Email: infokaydev@gmail.com",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"widgetId": "RowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"url": "https://linktr.ee/mrkaydev",
+"text": "All links here",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Mobile: +91-8920701834",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"space": 20,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"text": "Education",
+"widgetId": "BasicTextWidgetId",
+"endPadding": 0,
+"textConfig": {
+"color": "blue",
+"textSize": 16,
+"fontWeight": "bold"
+},
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"color": "black",
+"widgetId": "DividerWidgetId",
+"thickness": 1,
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"space": 20,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Ajay Kumar Garg Engineering College",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Bachelor of Technology in Computer Science Engineering; CGPA: <b>7.4</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "Aug. 2019 – May. 2023",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Ghaziabad",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"space": 12,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Rajkiya pratibha vikas vidyalaya",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Class 12th; PERCENTAGE: <b>93.7%</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "April. 2018 – May. 2019",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Surajmal vihar, New Delhi",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"space": 20,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"text": "Experience",
+"widgetId": "BasicTextWidgetId",
+"endPadding": 0,
+"textConfig": {
+"color": "blue",
+"textSize": 16,
+"fontWeight": "bold"
+},
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"color": "black",
+"widgetId": "DividerWidgetId",
+"thickness": 1,
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"space": 20,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Mobile Premier League (MPL)",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Android Intern",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "April 2023 - Present",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Bangalore, IN (Remote)",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"widgetId": "BulletinTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"textConfigsList": [
+{
+"text": "improved app startup time from <b>400 ms to 20 ms.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "Reduced app size around <b>20 Mb</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "Fixed framework crashes and setup Firebase crashlytics around <b>99.7%</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "Added a pre <b>gradle task</b> to check RN asset naming and also reduce webp size using cwebp as a pregradle task to improve storage utilisation.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "Added <b>Ruler by Spotify</b> as a post task to generate App Size distribution report and automate that to <b>Slack Ci build.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "worked with <b>MPL internal SDK’s</b> which are being used in multiple products.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+}
+]
+},
+{
+"space": 8,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "INDMoney",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Android Intern",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "Sept 2022 - March 2023",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Gurugram, IN (Remote)",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"widgetId": "BulletinTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"textConfigsList": [
+{
+"text": "was responsible for the whole <b>Mutual funds vertical.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "was the DRI for implementation of <b>Sentry SDK.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "worked on platform task for improving <b>Janky frames.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+}
+]
+},
+{
+"space": 8,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Atom EI",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Android Intern",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "June 2022 - Sept 2022",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Gurugram, IN (Remote)",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"widgetId": "BulletinTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"textConfigsList": [
+{
+"text": "<b>Led Personalized Time feature :</b> Added a feature in prod release for Personalized meditation time for making flexible meditation for the user. Bug-free in 1st e2e testing itself.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "<b>Image similarity algorithm :</b> Worked upon <b>Phash algorithm</b> which converted to a library in kotlin for internal use so that we can achieve Image similarity stable way with more than <b>85% accuracy.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "<b>Fixed bug on the production line :</b> Fixed a critical bug which leads to crashing, thus Firebase crashlytics events dropped by <b>90%.</b>",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+}
+]
+},
+{
+"space": 8,
+"widgetId": "SpacerWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0
+},
+{
+"widgetId": "MiddleBulletinRowTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"bulletinText": "•",
+"startPadding": 0,
+"bottomPadding": 0,
+"firstTextWidgetConfig": {
+"text": "Atom EI",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "bold"
+}
+},
+"thirdTextWidgetConfig": {
+"text": "Android Intern",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"fourthTextWidgetConfig": {
+"text": "June 2022 - Sept 2022",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontStyle": "italics",
+"fontWeight": "normal"
+}
+},
+"secondTextWidgetConfig": {
+"text": "Gurugram, IN (Remote)",
+"textConfig": {
+"color": "black",
+"textSize": 16,
+"fontWeight": "normal"
+}
+}
+},
+{
+"widgetId": "BulletinTextWidgetId",
+"endPadding": 0,
+"topPadding": 0,
+"startPadding": 0,
+"bottomPadding": 0,
+"textConfigsList": [
+{
+"text": "<b>Led Personalized Time feature :</b> Added a feature in prod release for Personalized meditation time for making flexible meditation for the user. Bug-free in 1st e2e testing itself.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "<b>Image similarity algorithm :</b> Worked upon Phash algorithm which converted to a library in kotlin for internal use so that we can achieve Image similarity stable way with more than 85% accuracy.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+},
+{
+"text": "<b>Fixed bug on the production line :</b> Fixed a critical bug which leads to crashing, thus Firebase crashlytics events dropped by 90%.",
+"textConfig": {
+"color": "black",
+"textSize": 14,
+"fontWeight": "normal"
+}
+}
+]
+}
+]
+}
+```
+
+</details>
+
+## How to make your Resume Website
 
 To use this resume generator website, follow these steps:
 
 1. Clone the repository.
 2. Open the project using your preferred Kotlin IDE.
-3. Modify the JSON input according to your resume content and customization preferences.
+3. Modify the RESUME_JSON_URL url according to your resume content and customization preferences.
 4. Build and run the KMP wasm application.
-5. View and download your personalized resume.
+5. Upload it to netlify.
 
 ## Conclusion
 
