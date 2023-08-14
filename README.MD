@@ -59,6 +59,27 @@ Select text styles:
 
 A basic text element with customizable attributes:
 
+```kotlin
+data class BasicTextWidgetConfig(
+    val text: String? = null,
+    val url: String? = null,
+    val shouldUnderLineUrl: Boolean? = true,
+    val textConfig: TextConfig = TextConfig(),
+    val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
+    val topPadding: Int = 0,
+    val bottomPadding: Int = 0,
+    val startPadding: Int = 0,
+    val endPadding: Int = 0
+) {
+    @kotlinx.serialization.Serializable
+    data class TextConfig(
+        val color: String? = null,
+        val fontWeight: String? = null,
+        val textSize: Int? = null,
+        val fontStyle: String? = null
+    )
+}
+
 - **text**: The text content.
 - **url**: URL associated with the text.
 - **shouldUnderLineUrl**: Whether the URL should be underlined (default: true).
@@ -79,6 +100,17 @@ Creates a bullet-point list with customizable text configurations:
 
 Adds a horizontal divider with customizable attributes:
 
+```kotlin
+data class BulletinTextWidgetConfig(
+    val bulletinText: String = "•",
+    val textConfigsList: List<BasicTextWidgetConfig>? = null,
+    val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
+    val topPadding: Int = 0,
+    val bottomPadding: Int = 0,
+    val startPadding: Int = 32,
+    val endPadding: Int = 0
+)
+
 - **thickness**: The thickness of the divider line.
 - **color**: Color of the divider.
 - **colorAlpha**: Alpha value for the color (default: 1.0).
@@ -89,6 +121,20 @@ Adds a horizontal divider with customizable attributes:
 
 Creates a row of text elements with bullet points and customizable configurations:
 
+```kotlin
+data class MiddleBulletinRowTextWidgetConfig(
+    val bulletinText: String = "•",
+    val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val thirdTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val fourthTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val widgetId: String = Widgets.MiddleBulletinRowTextWidgetId.widgetName,
+    val topPadding: Int = 0,
+    val bottomPadding: Int = 0,
+    val startPadding: Int = 0,
+    val endPadding: Int = 0
+)
+
 - **bulletinText**: The bullet point character (default: "•").
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**, **thirdTextWidgetConfig**, **fourthTextWidgetConfig**: BasicTextWidgetConfig for each element.
 - **widgetId**: "MiddleBulletinRowTextWidgetId"
@@ -98,6 +144,17 @@ Creates a row of text elements with bullet points and customizable configuration
 
 Represents a row of two text elements with customizable configurations:
 
+```kotlin
+data class RowTextWidgetConfig(
+    val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
+    val widgetId: String = Widgets.RowTextWidgetId.widgetName,
+    val topPadding: Int = 0,
+    val bottomPadding: Int = 0,
+    val startPadding: Int = 0,
+    val endPadding: Int = 0
+)
+
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**: BasicTextWidgetConfig for each element.
 - **widgetId**: "RowTextWidgetId"
 - **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values in int. ( e.g 32 i.e 32.dp )
@@ -105,6 +162,16 @@ Represents a row of two text elements with customizable configurations:
 ### SpacerWidgetConfig
 
 Adds vertical spacing between components:
+
+```kotlin
+data class SpacerWidgetConfig(
+    val space:Int?=null,
+     val widgetId: String = Widgets.SpacerWidgetId.widgetName,
+     val topPadding: Int = 0,
+     val bottomPadding: Int = 0,
+     val startPadding: Int = 0,
+     val endPadding: Int = 0
+)
 
 - **space**: The amount of spacing in int. ( e.g 32 i.e 32.dp )
 - **widgetId**: "SpacerWidgetId"
