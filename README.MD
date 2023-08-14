@@ -2,6 +2,10 @@
 
 This is a resume generator website built using Kotlin Multiplatform (KMP) WebAssembly (wasm). The website allows users to create their resumes by providing input in JSON format. It offers a variety of customization options for text appearance, such as colors, font weights, and styles. The generated resume can be customized using predefined colors, font weights, and styles.
 
+## Demo 
+
+
+
 ## Features
 
 - Generate personalized resumes using JSON input.
