@@ -32,6 +32,7 @@ The following colors can be used:
 - "lightGray", "lightGrey" -> Color.LightGray
 - "darkGray", "darkGrey" -> Color.DarkGray
 - "transparent" -> Color.Transparent
+- else -> Color.Black
 
 ### Font Weights
 
@@ -42,6 +43,7 @@ Choose from the following font weights:
 - "medium" -> FontWeight.Medium
 - "bold" -> FontWeight.Bold
 - "semiBold" -> FontWeight.SemiBold
+- else -> FontWeight.Normal
 
 ### Styles
 
@@ -60,9 +62,9 @@ A basic text element with customizable attributes:
 - **text**: The text content.
 - **url**: URL associated with the text.
 - **shouldUnderLineUrl**: Whether the URL should be underlined (default: true).
-- **textConfig**: Text configuration containing color, font weight, text size, and font style.
-- **widgetId**: Identifier for the widget.
-- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
+- **textConfig**: Text configuration containing color in String, font weight in String , text size in Int, and font style in String.
+- **widgetId**: I"BasicTextWidgetId"
+- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values  in int. ( e.g 32 i.e 32.dp )
 
 ### BulletinTextWidgetConfig
 
@@ -70,8 +72,8 @@ Creates a bullet-point list with customizable text configurations:
 
 - **bulletinText**: The bullet point character (default: "•").
 - **textConfigsList**: List of BasicTextWidgetConfig for the bullet points.
-- **widgetId**: Identifier for the widget.
-- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
+- **widgetId**: "BulletinTextWidgetId"
+- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values in int. ( e.g 32 i.e 32.dp )
 
 ### DividerWidgetConfig
 
@@ -80,8 +82,8 @@ Adds a horizontal divider with customizable attributes:
 - **thickness**: The thickness of the divider line.
 - **color**: Color of the divider.
 - **colorAlpha**: Alpha value for the color (default: 1.0).
-- **widgetId**: Identifier for the widget.
-- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
+- **widgetId**: "DividerWidgetId"
+- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values in int. ( e.g 32 i.e 32.dp )
 
 ### MiddleBulletinRowTextWidgetConfig
 
@@ -89,23 +91,23 @@ Creates a row of text elements with bullet points and customizable configuration
 
 - **bulletinText**: The bullet point character (default: "•").
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**, **thirdTextWidgetConfig**, **fourthTextWidgetConfig**: BasicTextWidgetConfig for each element.
-- **widgetId**: Identifier for the widget.
-- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
+- **widgetId**: "MiddleBulletinRowTextWidgetId"
+- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values in int. ( e.g 32 i.e 32.dp )
 
 ### RowTextWidgetConfig
 
 Represents a row of two text elements with customizable configurations:
 
 - **firstTextWidgetConfig**, **secondTextWidgetConfig**: BasicTextWidgetConfig for each element.
-- **widgetId**: Identifier for the widget.
-- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
+- **widgetId**: "RowTextWidgetId"
+- **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values in int. ( e.g 32 i.e 32.dp )
 
 ### SpacerWidgetConfig
 
 Adds vertical spacing between components:
 
-- **space**: The amount of spacing.
-- **widgetId**: Identifier for the widget.
+- **space**: The amount of spacing in int. ( e.g 32 i.e 32.dp )
+- **widgetId**: "SpacerWidgetId"
 - **topPadding**, **bottomPadding**, **startPadding**, **endPadding**: Padding values.
 
 ## Getting Started
