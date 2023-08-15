@@ -788,6 +788,16 @@ To use this resume generator website, follow these steps:
 4. Build and run the KMP wasm application.
 5. Upload it to netlify.
 
+## Need easy way ??
+
+First Install Gradle
+
+1. Install <a href="https://gradle.org/install/">Gradle</a>
+2. Go to root of this project i.e where GenerateWebsite.bash is there.
+3. Execute it using shell scripting. i.e ( bash GenerateWebsite.bash)
+  i) It will ask you to enter JSON_URL for your resume where json is hosted.
+ ii) Then it will generate a folder if all is well. Just drag and drop that folder to any static site hosting you want.
+
 ## Conclusion
 
 This KMP wasm-powered website provides an innovative way to create personalized resumes using JSON
