@@ -76,7 +76,7 @@ data class BasicTextWidgetConfig(
     val text: String? = null,
     val url: String? = null,
     val shouldUnderLineUrl: Boolean? = true,
-    val textConfig: TextConfig = TextConfig(),
+    @JsonNames("config","textConfig") val textConfig: TextConfig = TextConfig(),
     val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
     val topPadding: Int = 0,
     val bottomPadding: Int = 0,
@@ -119,7 +119,7 @@ Adds a horizontal divider with customizable attributes:
 ```kotlin
 data class BulletinTextWidgetConfig(
     val bulletinText: String = "•",
-    val textConfigsList: List<BasicTextWidgetConfig>? = null,
+    @JsonNames("textList","list")val textConfigsList: List<BasicTextWidgetConfig>? = null,
     val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
     val topPadding: Int = 0,
     val bottomPadding: Int = 0,
@@ -142,10 +142,10 @@ Creates a row of text elements with bullet points and customizable configuration
 ```kotlin
 data class MiddleBulletinRowTextWidgetConfig(
     val bulletinText: String = "•",
-    val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
-    val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
-    val thirdTextWidgetConfig: BasicTextWidgetConfig? = null,
-    val fourthTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("firstText","firstTextWidgetConfig") val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("secondText","secondTextWidgetConfig") val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("thirdText","thirdTextWidgetConfig") val thirdTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("fourthText","fourthTextWidgetConfig") val fourthTextWidgetConfig: BasicTextWidgetConfig? = null,
     val widgetId: String = Widgets.MiddleBulletinRowTextWidgetId.widgetName,
     val topPadding: Int = 0,
     val bottomPadding: Int = 0,
@@ -167,8 +167,8 @@ Represents a row of two text elements with customizable configurations:
 
 ```kotlin
 data class RowTextWidgetConfig(
-    val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
-    val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("firstText","firstTextWidgetConfig") val firstTextWidgetConfig: BasicTextWidgetConfig? = null,
+    @JsonNames("secondText","secondTextWidgetConfig") val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
     val widgetId: String = Widgets.RowTextWidgetId.widgetName,
     val topPadding: Int = 0,
     val bottomPadding: Int = 0,
@@ -208,569 +208,597 @@ data class SpacerWidgetConfig(
 
 ```json
 {
-  "resumeUrl": "https://d1fdloi71mui9q.cloudfront.net/Pz93R8fISZm11vhLK3Qx_KapilResume.pdf",
   "resumeName": "KapilYadav-Resume.pdf",
+  "resumeUrl": "https://d1fdloi71mui9q.cloudfront.net/Pz93R8fISZm11vhLK3Qx_KapilResume.pdf",
+  "githubUrl": "https://github.com/KapilYadav-dev/KotResume",
   "resumeDataList": [
     {
-      "widgetId": "RowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "Kapil Yadav",
-        "textConfig": {
+        "config": {
           "color": "blue",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Email: infokaydev@gmail.com",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "widgetId": "RowTextWidgetId",
+      "topPadding": 0,
+      "bottomPadding": 0,
+      "startPadding": 0,
+      "endPadding": 0
     },
     {
-      "widgetId": "RowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
-        "url": "https://linktr.ee/mrkaydev",
+      "firstText": {
         "text": "All links here",
-        "textConfig": {
+        "url": "https://linktr.ee/mrkaydev",
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
       },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Mobile: +91-8920701834",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "widgetId": "RowTextWidgetId"
     },
     {
       "space": 20,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
       "text": "Education",
-      "widgetId": "BasicTextWidgetId",
-      "endPadding": 0,
-      "textConfig": {
+      "config": {
         "color": "blue",
-        "textSize": 16,
-        "fontWeight": "bold"
+        "fontWeight": "bold",
+        "textSize": 16
       },
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "BasicTextWidgetId"
     },
     {
-      "color": "black",
-      "widgetId": "DividerWidgetId",
       "thickness": 1,
-      "endPadding": 0,
+      "color": "black",
       "topPadding": 0,
+      "widgetId": "DividerWidgetId",
+      "bottomPadding": 0,
       "startPadding": 0,
-      "bottomPadding": 0
+      "endPadding": 0
     },
     {
       "space": 20,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
       "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "Ajay Kumar Garg Engineering College",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Bachelor of Technology in Computer Science Engineering; CGPA: <b>7.4</b>",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "Aug. 2019 – May. 2023",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Ghaziabad",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "thirdText": {
+        "text": "Bachelor of Technology in Computer Science Engineering; CGPA: <b>7.4</b>",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "fourthText": {
+        "text": "Aug. 2019 – May. 2023",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
       "space": 12,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
       "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "Rajkiya pratibha vikas vidyalaya",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Class 12th; PERCENTAGE: <b>93.7%</b>",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "April. 2018 – May. 2019",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Surajmal vihar, New Delhi",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "thirdText": {
+        "text": "Class 12th; PERCENTAGE: <b>93.7%</b>",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14
+        }
+      },
+      "fourthText": {
+        "text": "April. 2018 – May. 2019",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
       "space": 20,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
       "text": "Experience",
-      "widgetId": "BasicTextWidgetId",
-      "endPadding": 0,
-      "textConfig": {
+      "config": {
         "color": "blue",
-        "textSize": 16,
-        "fontWeight": "bold"
+        "fontWeight": "bold",
+        "textSize": 16
       },
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "BasicTextWidgetId"
     },
     {
-      "color": "black",
-      "widgetId": "DividerWidgetId",
       "thickness": 1,
-      "endPadding": 0,
+      "color": "black",
       "topPadding": 0,
+      "widgetId": "DividerWidgetId",
+      "bottomPadding": 0,
       "startPadding": 0,
-      "bottomPadding": 0
+      "endPadding": 0
     },
     {
       "space": 20,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
       "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "Mobile Premier League (MPL)",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Android Intern",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "April 2023 - Present",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Bangalore, IN (Remote)",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "thirdText": {
+        "text": "Android Intern",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "fourthText": {
+        "text": "April 2023 - Aug",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
-      "widgetId": "BulletinTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "textConfigsList": [
+      "list": [
         {
           "text": "improved app startup time from <b>400 ms to 20 ms.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "Reduced app size around <b>20 Mb</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "Fixed framework crashes and setup Firebase crashlytics around <b>99.7%</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "Added a pre <b>gradle task</b> to check RN asset naming and also reduce webp size using cwebp as a pregradle task to improve storage utilisation.",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "Added <b>Ruler by Spotify</b> as a post task to generate App Size distribution report and automate that to <b>Slack Ci build.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "worked with <b>MPL internal SDK’s</b> which are being used in multiple products.",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         }
-      ]
+      ],
+      "widgetId": "BulletinTextWidgetId"
     },
     {
       "space": 8,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
       "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "INDMoney",
-        "textConfig": {
+        "url": "https://drive.google.com/file/d/1IL10x96P53Uyc4Hjqj6Y5eAoYPC7M2xU/view?usp=sharing",
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Android Intern",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "Sept 2022 - March 2023",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Gurugram, IN (Remote)",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "thirdText": {
+        "text": "Android Intern",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "fourthText": {
+        "text": "Sept 2022 - March 2023",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
-      "widgetId": "BulletinTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "textConfigsList": [
+      "list": [
         {
           "text": "was responsible for the whole <b>Mutual funds vertical.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "was the DRI for implementation of <b>Sentry SDK.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "worked on platform task for improving <b>Janky frames.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         }
-      ]
+      ],
+      "widgetId": "BulletinTextWidgetId"
     },
     {
       "space": 8,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
       "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
+      "firstText": {
         "text": "Atom EI",
-        "textConfig": {
+        "url": "https://drive.google.com/file/d/1Cm_g5iXFo9rEiXPYUZXr5GbiKUnjfiXG/view?usp=sharing",
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Android Intern",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "June 2022 - Sept 2022",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
+      "secondText": {
         "text": "Gurugram, IN (Remote)",
-        "textConfig": {
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
+          "fontWeight": "normal",
+          "textSize": 16
         }
-      }
+      },
+      "thirdText": {
+        "text": "Android Intern",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "fourthText": {
+        "text": "June 2022 - Sept 2022",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14,
+          "fontStyle": "italics"
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
-      "widgetId": "BulletinTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "textConfigsList": [
+      "list": [
         {
           "text": "<b>Led Personalized Time feature :</b> Added a feature in prod release for Personalized meditation time for making flexible meditation for the user. Bug-free in 1st e2e testing itself.",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "<b>Image similarity algorithm :</b> Worked upon <b>Phash algorithm</b> which converted to a library in kotlin for internal use so that we can achieve Image similarity stable way with more than <b>85% accuracy.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
           "text": "<b>Fixed bug on the production line :</b> Fixed a critical bug which leads to crashing, thus Firebase crashlytics events dropped by <b>90%.</b>",
-          "textConfig": {
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         }
-      ]
+      ],
+      "widgetId": "BulletinTextWidgetId"
+    },
+    {
+      "space": 20,
+      "widgetId": "SpacerWidgetId"
+    },
+    {
+      "text": "Projects",
+      "config": {
+        "color": "blue",
+        "fontWeight": "bold",
+        "textSize": 16
+      },
+      "widgetId": "BasicTextWidgetId"
+    },
+    {
+      "thickness": 1,
+      "color": "black",
+      "topPadding": 0,
+      "widgetId": "DividerWidgetId",
+      "bottomPadding": 0,
+      "startPadding": 0,
+      "endPadding": 0
+    },
+    {
+      "space": 20,
+      "widgetId": "SpacerWidgetId"
+    },
+    {
+      "bulletinText": "",
+      "firstText": {
+        "text": "1SecMailApp",
+        "url": "https://github.com/KapilYadav-dev/1SecMail",
+        "config": {
+          "color": "black",
+          "fontWeight": "bold",
+          "textSize": 16
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
+    },
+    {
+      "list": [
+        {
+          "text": "An unofficial app of 1SecMail api. Made with KMP ( <b>Made with Compose Multiplatform )</b>",
+          "config": {
+            "color": "black",
+            "fontWeight": "normal",
+            "textSize": 14
+          }
+        },
+        {
+          "text": "Opensource and quite popular on github.",
+          "config": {
+            "color": "black",
+            "fontWeight": "normal",
+            "textSize": 14
+          }
+        },
+        {
+          "text": "From single codebase it delivers <b>Ios, MacOs, Windows, Linux and Android</b>",
+          "config": {
+            "color": "black",
+            "fontWeight": "normal",
+            "textSize": 14
+          }
+        }
+      ],
+      "widgetId": "BulletinTextWidgetId"
     },
     {
       "space": 8,
-      "widgetId": "SpacerWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0
+      "widgetId": "SpacerWidgetId"
     },
     {
-      "widgetId": "MiddleBulletinRowTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "bulletinText": "•",
-      "startPadding": 0,
-      "bottomPadding": 0,
-      "firstTextWidgetConfig": {
-        "text": "Atom EI",
-        "textConfig": {
+      "bulletinText": "",
+      "firstText": {
+        "text": "KotResume (Dynamic KMP based resume)",
+        "url": "https://github.com/KapilYadav-dev/KotResume",
+        "config": {
           "color": "black",
-          "textSize": 16,
-          "fontWeight": "bold"
+          "fontWeight": "bold",
+          "textSize": 16
         }
       },
-      "thirdTextWidgetConfig": {
-        "text": "Android Intern",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "fourthTextWidgetConfig": {
-        "text": "June 2022 - Sept 2022",
-        "textConfig": {
-          "color": "black",
-          "textSize": 14,
-          "fontStyle": "italics",
-          "fontWeight": "normal"
-        }
-      },
-      "secondTextWidgetConfig": {
-        "text": "Gurugram, IN (Remote)",
-        "textConfig": {
-          "color": "black",
-          "textSize": 16,
-          "fontWeight": "normal"
-        }
-      }
+      "widgetId": "MiddleBulletinRowTextWidgetId"
     },
     {
-      "widgetId": "BulletinTextWidgetId",
-      "endPadding": 0,
-      "topPadding": 0,
-      "startPadding": 0,
-      "bottomPadding": 0,
       "textConfigsList": [
         {
-          "text": "<b>Led Personalized Time feature :</b> Added a feature in prod release for Personalized meditation time for making flexible meditation for the user. Bug-free in 1st e2e testing itself.",
-          "textConfig": {
+          "text": "This is a resume generator website built using <b>Kotlin Multiplatform (KMP) WebAssembly (wasm).</b>",
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
-          "text": "<b>Image similarity algorithm :</b> Worked upon Phash algorithm which converted to a library in kotlin for internal use so that we can achieve Image similarity stable way with more than 85% accuracy.",
-          "textConfig": {
+          "text": "Opensource and quite popular on github.",
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         },
         {
-          "text": "<b>Fixed bug on the production line :</b> Fixed a critical bug which leads to crashing, thus Firebase crashlytics events dropped by 90%.",
-          "textConfig": {
+          "text": "Convert Json to resume in simple steps.",
+          "config": {
             "color": "black",
-            "textSize": 14,
-            "fontWeight": "normal"
+            "fontWeight": "normal",
+            "textSize": 14
           }
         }
-      ]
+      ],
+      "widgetId": "BulletinTextWidgetId"
+    },
+    {
+      "space": 20,
+      "widgetId": "SpacerWidgetId"
+    },
+    {
+      "text": "Skills",
+      "config": {
+        "color": "blue",
+        "fontWeight": "bold",
+        "textSize": 16
+      },
+      "widgetId": "BasicTextWidgetId"
+    },
+    {
+      "thickness": 1,
+      "color": "black",
+      "topPadding": 0,
+      "widgetId": "DividerWidgetId",
+      "bottomPadding": 0,
+      "startPadding": 0,
+      "endPadding": 0
+    },
+    {
+      "space": 20,
+      "widgetId": "SpacerWidgetId"
+    },
+    {
+      "bulletinText": "•",
+      "firstText": {
+        "text": "<b>Languages:</b> Java, Kotlin, Python, Javascript",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14
+        }
+      },
+      "secondText": {
+        "text": "<b>Technologies:</b> AR, Bug testing, IOT, AWS, CI/CD",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
+    },
+    {
+      "space": 8,
+      "widgetId": "SpacerWidgetId"
+    },
+    {
+      "bulletinText": "•",
+      "firstText": {
+        "text": "<b>Frameworks and Tools:</b> Git, Android, React Native, MS App center, Jenkins, Android Studio, VS Code, Slack,<b> Compose Multiplatform, KMP.</b>",
+        "config": {
+          "color": "black",
+          "fontWeight": "normal",
+          "textSize": 14
+        }
+      },
+      "widgetId": "MiddleBulletinRowTextWidgetId"
+    },
+    {
+      "space": 8,
+      "widgetId": "SpacerWidgetId"
     }
   ]
 }
