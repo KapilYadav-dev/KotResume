@@ -6,5 +6,6 @@ import kotlinx.serialization.json.JsonObject
 data class WebsiteData(
     val resumeName: String?=null,
     val resumeUrl: String?=null,
+    val githubUrl: String?=null,
     val resumeDataList: List<JsonObject>?=null
 )

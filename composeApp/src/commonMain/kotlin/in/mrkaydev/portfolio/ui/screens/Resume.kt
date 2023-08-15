@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Download
+import compose.icons.feathericons.Github
 import compose.icons.feathericons.Menu
 import `in`.mrkaydev.portfolio.data.*
 import `in`.mrkaydev.portfolio.getWindowDimen
@@ -41,7 +42,10 @@ fun Resume(data: WebsiteData) {
                 Icon(imageVector = FeatherIcons.Menu, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp), tint = Color.White)
                 Text(data.resumeName.toString(), fontWeight = FontWeight.SemiBold, fontFamily = FontLoader.Montserrat, fontSize = 16.sp, color = Color.White)
             }
-            Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
+            Row {
+                Icon(imageVector = FeatherIcons.Github, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.githubUrl) }, tint = Color.White)
+                Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
+            }
         }
         LazyColumn(
             modifier = Modifier.fillMaxWidth(ratio).fillMaxHeight().background(Color.White)
