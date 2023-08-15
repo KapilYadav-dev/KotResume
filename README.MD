@@ -792,6 +792,10 @@ To use this resume generator website, follow these steps:
 
 First Install Gradle
 
+Video tutorial 
+
+https://www.youtube.com/watch?v=c_uVpMUi1Ss
+
 1. Install <a href="https://gradle.org/install/">Gradle</a>
 2. Go to root of this project i.e where GenerateWebsite.bash is there.
 3. Execute it using shell scripting. i.e ( bash GenerateWebsite.bash)
