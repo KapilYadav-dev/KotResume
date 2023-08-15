@@ -95,7 +95,7 @@ fun Resume(data: WebsiteData) {
         ) {
             items(data.resumeDataList?: emptyList()) {
                 val id = it["widgetId"]?.jsonPrimitive?.contentOrNull
-                when (id.toString()) {
+                when (id) {
                     Widgets.BasicTextWidgetId.widgetName -> {
                         val data = Json.decodeFromJsonElement(BasicTextWidgetConfig.serializer(), it)
                         BasicText(data)
