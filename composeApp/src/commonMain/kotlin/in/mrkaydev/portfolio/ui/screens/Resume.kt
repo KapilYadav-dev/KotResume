@@ -5,9 +5,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,17 +35,56 @@ import kotlinx.serialization.json.jsonPrimitive
 fun Resume(data: WebsiteData) {
     val width = getWindowDimen().first
     val height = getWindowDimen().second
+    val state = rememberLazyListState()
 
-    val ratio= if(width<height) 0.8f else 0.45f
+    LaunchedEffect(Unit) {
+        state.scrollToItem(0)
+    }
+
+    val ratio = if (width < height) 0.8f else 0.45f
     Box(modifier = Modifier.background(Color(0xff535659)).fillMaxSize()) {
-        Row(modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp).background(Color(0xff333639)), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(
+            modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp)
+                .background(Color(0xff333639)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Row {
-                Icon(imageVector = FeatherIcons.Menu, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp), tint = Color.White)
-                Text(data.resumeName.toString(), fontWeight = FontWeight.SemiBold, fontFamily = FontLoader.Montserrat, fontSize = 16.sp, color = Color.White)
+                data.resumeName?.let {
+                    Icon(
+                        imageVector = FeatherIcons.Menu,
+                        contentDescription = "",
+                        modifier = Modifier.padding(horizontal = 32.dp).size(24.dp),
+                        tint = Color.White
+                    )
+                    Text(
+                        data.resumeName.toString(),
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = FontLoader.Montserrat,
+                        fontSize = 16.sp,
+                        color = Color.White
+                    )
+                }
             }
             Row {
-                Icon(imageVector = FeatherIcons.Github, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.githubUrl) }, tint = Color.White)
-                Icon(imageVector = FeatherIcons.Download, contentDescription = "", modifier = Modifier.padding(horizontal = 32.dp).size(24.dp).clickable { openUrl(data.resumeUrl) }, tint = Color.White)
+                data.githubUrl?.let {
+                    Icon(
+                        imageVector = FeatherIcons.Github,
+                        contentDescription = "",
+                        modifier = Modifier.padding(horizontal = 32.dp).size(24.dp)
+                            .clickable { openUrl(data.githubUrl) },
+                        tint = Color.White
+                    )
+                }
+                data.resumeUrl?.let {
+                    Icon(
+                        imageVector = FeatherIcons.Download,
+                        contentDescription = "",
+                        modifier = Modifier.padding(horizontal = 32.dp).size(24.dp)
+                            .clickable { openUrl(data.resumeUrl) },
+                        tint = Color.White
+                    )
+                }
             }
         }
         LazyColumn(
