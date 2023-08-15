@@ -44,7 +44,7 @@ internal fun App() {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(64.dp).align(Alignment.Center),
-                    color = Color.Blue
+                    color = Color.Black
                 )
                 Text(
                     "made by mrkaydev and powered by Compose multiplatform <3",
