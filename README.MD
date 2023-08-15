@@ -822,7 +822,7 @@ First Install Gradle
 
 Video tutorial 
 
-https://www.youtube.com/watch?v=c_uVpMUi1Ss
+https://youtu.be/bzu_B2su9I8
 
 1. Install <a href="https://gradle.org/install/">Gradle</a>
 2. Go to root of this project i.e where GenerateWebsite.bash is there.
