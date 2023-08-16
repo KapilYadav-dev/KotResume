@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import `in`.mrkaydev.portfolio.data.WebsiteData
 import `in`.mrkaydev.portfolio.networking.httpClient
 import `in`.mrkaydev.portfolio.theme.AppTheme
+import `in`.mrkaydev.portfolio.ui.screens.JsonMakerForm
 import `in`.mrkaydev.portfolio.ui.screens.Resume
 import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils
@@ -40,7 +41,7 @@ internal fun App() {
         data = httpClient.get(Utils.RESUME_JSON_URL).body()
     }
     AppTheme {
-        if (isFontLoaded && showResume) Resume(data) else if (isFontLoaded) {
+        if (isFontLoaded && showResume) JsonMakerForm() else if (isFontLoaded) {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(64.dp).align(Alignment.Center),
