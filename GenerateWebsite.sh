@@ -1,5 +1,37 @@
 #!/bin/bash
 
+
+# Install Gradle if not already installed
+if ! command -v gradle &> /dev/null; then
+    echo "Gradle is not installed. Installing..."
+
+    # Check the operating system and install Gradle accordingly
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        sudo apt-get install gradle
+        echo "Waiting for Gradle installation to complete..."
+        while ! command -v gradle &> /dev/null; do
+            sleep 2
+        done
+        echo "Gradle installation completed."
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install gradle
+        echo "Waiting for Gradle installation to complete..."
+        while ! command -v gradle &> /dev/null; do
+            sleep 2
+        done
+        echo "Gradle installation completed."
+    elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" || "$OSTYPE" == "cygwin" ]]; then
+        # Add instructions for manual installation on Windows
+        echo "Gradle installation on Windows requires manual steps."
+        echo "Please download and install Gradle distribution for Windows."
+        exit 1
+    else
+        echo "Operating system not supported for automatic Gradle installation."
+        exit 1
+    fi
+fi
+
+# shellcheck disable=SC2162
 read -p "Enter the new URL for RESUME_JSON_URL: " new_url
 
 # Define paths
