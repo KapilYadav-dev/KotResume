@@ -12,6 +12,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.mvvm.compose.getViewModel
+import dev.icerock.moko.mvvm.compose.viewModelFactory
+import `in`.mrkaydev.portfolio.ui.ViewModel
 import `in`.mrkaydev.portfolio.ui.components.*
 import `in`.mrkaydev.portfolio.utils.FontLoader
 
@@ -26,50 +29,20 @@ fun getOutlineTextFieldColors() = TextFieldDefaults.outlinedTextFieldColors(
 
 @Composable
 fun JsonMakerForm() {
-    var name by remember { mutableStateOf("") }
-    var githubUrl by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var mobile by remember { mutableStateOf("") }
-    var links by remember { mutableStateOf("") }
-    var languages by remember { mutableStateOf("") }
-    var tools by remember { mutableStateOf("") }
-    var technologies by remember { mutableStateOf("") }
-
+    val viewModel = getViewModel(Unit, viewModelFactory { ViewModel() })
     val scrollState = rememberScrollState()
 
-    var educationList by remember { mutableStateOf(listOf(EducationData("", "", "", ""))) }
-    var experienceList by remember {
-        mutableStateOf(
-            listOf(
-                ExperienceData(
-                    "",
-                    "",
-                    "",
-                    listOf("")
-                )
-            )
-        )
-    }
-
-    var projectList by remember { mutableStateOf(listOf(ProjectData("", listOf("")))) }
-
-    var addEducationButtonEnabled by remember { mutableStateOf(false) }
-    var addExperienceButtonEnabled by remember { mutableStateOf(false) }
-    var addProjectButtonEnabled by remember { mutableStateOf(false) }
-    var buttonSubmitEnabled by remember { mutableStateOf(false) }
-
-    addProjectButtonEnabled = projectList.lastOrNull()?.isFilled() == true
-    addEducationButtonEnabled = educationList.lastOrNull()?.isFilled() == true
-    addExperienceButtonEnabled = experienceList.lastOrNull()?.isFilled() == true
-    buttonSubmitEnabled = name.isNotEmpty()
-            && email.isNotEmpty()
-            && languages.isNotEmpty()
-            && tools.isNotEmpty()
-            && technologies.isNotEmpty()
-            && educationList.isNotEmpty() && educationList[0].isFilled()
-            && experienceList.isNotEmpty() && experienceList[0].isFilled()
-            && projectList.isNotEmpty() && projectList[0].isFilled()
-
+    viewModel.addProjectButtonEnabled = viewModel.projectList.lastOrNull()?.isFilled() == true
+    viewModel.addEducationButtonEnabled = viewModel.educationList.lastOrNull()?.isFilled() == true
+    viewModel.addExperienceButtonEnabled = viewModel.experienceList.lastOrNull()?.isFilled() == true
+    viewModel.buttonSubmitEnabled = viewModel.name.isNotEmpty()
+            && viewModel.email.isNotEmpty()
+            && viewModel.languages.isNotEmpty()
+            && viewModel.tools.isNotEmpty()
+            && viewModel.technologies.isNotEmpty()
+            && viewModel.educationList.isNotEmpty() && viewModel.educationList[0].isFilled()
+            && viewModel.experienceList.isNotEmpty() && viewModel.experienceList[0].isFilled()
+            && viewModel.projectList.isNotEmpty() && viewModel.projectList[0].isFilled()
 
     Column(
         modifier = Modifier
@@ -85,73 +58,73 @@ fun JsonMakerForm() {
             fontWeight = FontWeight.SemiBold
         )
         OutlinedTextField(
-            value = name,
+            value = viewModel.name,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { name = it },
+            onValueChange = { viewModel.name = it },
             label = { Text("Name", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
-            value = email,
+            value = viewModel.email,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { email = it },
+            onValueChange = { viewModel.email = it },
             label = { Text("Email", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
-            value = mobile,
+            value = viewModel.mobile,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { mobile = it },
+            onValueChange = { viewModel.mobile = it },
             label = { Text("Mobile", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
-            value = links,
+            value = viewModel.links,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { links = it },
+            onValueChange = { viewModel.links = it },
             label = { Text("Links", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            value = githubUrl,
+            value = viewModel.githubUrl,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { githubUrl = it },
+            onValueChange = { viewModel.githubUrl = it },
             label = { Text("Github Url", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            value = languages,
+            value = viewModel.languages,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { languages = it },
+            onValueChange = { viewModel.languages = it },
             label = { Text("Programming languages (e.g Python, Java, C++)", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            value = technologies,
+            value = viewModel.technologies,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { technologies = it },
+            onValueChange = { viewModel.technologies = it },
             label = { Text("Technologies (e.g. CI/CD, IOT etc)", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
-            value = tools,
+            value = viewModel.tools,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
-            onValueChange = { tools = it },
+            onValueChange = { viewModel.tools = it },
             label = {
                 Text(
                     "Frameworks and tools (e.g. KMP, Android, Android Studio)",
@@ -163,11 +136,11 @@ fun JsonMakerForm() {
         Spacer(modifier = Modifier.height(16.dp))
         Text("Education:", fontFamily = font, fontSize = 32.sp, fontWeight = FontWeight.SemiBold)
         Spacer(modifier = Modifier.height(8.dp))
-        educationList.forEachIndexed { index, education ->
+        viewModel.educationList.forEachIndexed { index, education ->
             EducationItem(
                 education = education,
                 onEducationChange = { newEducation ->
-                    educationList = educationList.toMutableList().also {
+                    viewModel.educationList = viewModel.educationList.toMutableList().also {
                         it[index] = newEducation
                     }
                 }
@@ -175,13 +148,13 @@ fun JsonMakerForm() {
             Spacer(modifier = Modifier.height(16.dp))
         }
         Button(
-            onClick = { educationList = educationList + EducationData("", "", "", "") },
+            onClick = { viewModel.educationList = viewModel.educationList + EducationData("", "", "", "") },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(0.5f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(0xff4169e1)
             ),
-            enabled = addEducationButtonEnabled
+            enabled = viewModel.addEducationButtonEnabled
         ) {
             Text(
                 "Add More Education",
@@ -193,11 +166,11 @@ fun JsonMakerForm() {
         Spacer(modifier = Modifier.height(16.dp))
         Text("Experience:", fontFamily = font, fontSize = 32.sp, fontWeight = FontWeight.SemiBold)
         Spacer(modifier = Modifier.height(8.dp))
-        experienceList.forEachIndexed { index, experience ->
+        viewModel.experienceList.forEachIndexed { index, experience ->
             ExperienceItem(
                 experience = experience,
                 onExperienceChange = { newExperience ->
-                    experienceList = experienceList.toMutableList().also {
+                    viewModel.experienceList = viewModel.experienceList.toMutableList().also {
                         it[index] = newExperience
                     }
                 },
@@ -205,13 +178,13 @@ fun JsonMakerForm() {
             Spacer(modifier = Modifier.height(16.dp))
         }
         Button(
-            onClick = { experienceList = experienceList + ExperienceData("", "", "", listOf("")) },
+            onClick = { viewModel.experienceList = viewModel.experienceList + ExperienceData("", "", "", listOf("")) },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(0.5f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(0xff4169e1)
             ),
-            enabled = addExperienceButtonEnabled
+            enabled = viewModel.addExperienceButtonEnabled
         ) {
             Text(
                 "Add More Experience",
@@ -222,11 +195,11 @@ fun JsonMakerForm() {
         }
         Text("Project:", fontFamily = font, fontSize = 32.sp, fontWeight = FontWeight.SemiBold)
         Spacer(modifier = Modifier.height(8.dp))
-        projectList.forEachIndexed { index, project ->
+        viewModel.projectList.forEachIndexed { index, project ->
             ProjectItem(
                 project = project,
                 onProjectChange = { newProject ->
-                    projectList = projectList.toMutableList().also {
+                    viewModel.projectList = viewModel.projectList.toMutableList().also {
                         it[index] = newProject
                     }
                 }
@@ -235,13 +208,13 @@ fun JsonMakerForm() {
         }
 
         Button(
-            onClick = { projectList = projectList + ProjectData("", listOf()) },
+            onClick = { viewModel.projectList = viewModel.projectList + ProjectData("", listOf()) },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(0.5f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(0xff4169e1)
             ),
-            enabled = addProjectButtonEnabled
+            enabled = viewModel.addProjectButtonEnabled
         ) {
             Text(
                 "Add More Project",
@@ -253,14 +226,14 @@ fun JsonMakerForm() {
         Spacer(Modifier.height(40.dp))
         Button(
             onClick = {
-                makeJson()
+                viewModel.makeJson()
             },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(1f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(0xff4169e1)
             ),
-            enabled = buttonSubmitEnabled
+            enabled = viewModel.buttonSubmitEnabled
         ) {
             Text(
                 "Make Resume Json",
@@ -270,8 +243,4 @@ fun JsonMakerForm() {
             )
         }
     }
-}
-
-fun makeJson() {
-
 }
