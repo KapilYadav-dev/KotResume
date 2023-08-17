@@ -33,6 +33,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation(libs.composeIcons.featherIcons)
                 implementation(libs.kotlinx.serialization.json)
+                implementation("dev.icerock.moko:mvvm-core:0.16.1")
+                implementation("dev.icerock.moko:mvvm-compose:0.16.1")
             }
         }
 
