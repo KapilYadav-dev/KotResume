@@ -41,7 +41,7 @@ fun Resume(data: WebsiteData) {
         state.scrollToItem(0)
     }
 
-    val ratio = if (width < height) 0.8f else 0.45f
+    val ratio = if (width < height) 0.8f else 0.55f
     Box(modifier = Modifier.background(Color(0xff535659)).fillMaxSize()) {
         Row(
             modifier = Modifier.fillMaxWidth().zIndex(1f).height(64.dp)

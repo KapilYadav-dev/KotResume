@@ -16,9 +16,9 @@ import androidx.compose.ui.unit.sp
 import `in`.mrkaydev.portfolio.data.BasicTextWidgetConfig
 import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.utils.FontLoader
+import `in`.mrkaydev.portfolio.utils.HtmlParser.parseHtml
 import `in`.mrkaydev.portfolio.utils.Utils
 import `in`.mrkaydev.portfolio.utils.Utils.getFontStyleElseNormal
-import `in`.mrkaydev.portfolio.utils.Utils.parseHtml
 import `in`.mrkaydev.portfolio.utils.Utils.toSp
 
 @Composable
