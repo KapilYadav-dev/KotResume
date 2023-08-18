@@ -822,13 +822,12 @@ First Install Gradle
 
 Video tutorial 
 
-https://youtu.be/bzu_B2su9I8
+https://youtu.be/Gfb_cKAM298
 
-1. Install <a href="https://gradle.org/install/">Gradle</a>
-2. Go to root of this project i.e where GenerateWebsite.bash is there.
-3. Execute it using shell scripting. i.e ( bash GenerateWebsite.bash)
+1. Go to WebsiteCode folder which is in root of this project i.e (./WebsiteCode)
+2. Execute changeUrl.sh using bash scripting. i.e ( bash changeUrl.sh)
   i) It will ask you to enter JSON_URL for your resume where json is hosted.
- ii) Then it will generate a folder if all is well. Just drag and drop that folder to any static site hosting you want.
+ ii) After completion just drag and drop that folder to any static site hosting you want.
 
 ## Conclusion
 
