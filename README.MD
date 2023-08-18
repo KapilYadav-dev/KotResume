@@ -818,8 +818,6 @@ To use this resume generator website, follow these steps:
 
 ## Need easy way ??
 
-First Install Gradle
-
 Video tutorial 
 
 https://youtu.be/Gfb_cKAM298
