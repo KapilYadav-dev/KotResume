@@ -1,7 +1,8 @@
 package `in`.mrkaydev.portfolio.ui.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,10 +25,9 @@ import `in`.mrkaydev.portfolio.utils.Utils.toSp
 @Composable
 fun BasicText(config: BasicTextWidgetConfig) {
     val clipBoard = LocalClipboardManager.current
-
     config.apply {
         text?.let {
-            Column {
+            Row {
                 var textLayoutResult: TextLayoutResult? = null
                 Text(
                     text = it.parseHtml(),
@@ -57,7 +57,6 @@ fun BasicText(config: BasicTextWidgetConfig) {
                         }
                     }.clickable {
                         clipBoard.setText(AnnotatedString(it))
-                        //showAlert("Copied to clipboard")
                         openUrl(url)
                     }
                 )
