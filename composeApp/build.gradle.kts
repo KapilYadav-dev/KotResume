@@ -35,6 +35,7 @@ kotlin {
                 implementation(libs.kotlinx.serialization.json)
                 implementation("dev.icerock.moko:mvvm-core:0.16.1")
                 implementation("dev.icerock.moko:mvvm-compose:0.16.1")
+                implementation("app.softwork:routing-compose:0.2.12")
             }
         }
 
