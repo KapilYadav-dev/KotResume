@@ -1,5 +1,6 @@
 package `in`.mrkaydev.portfolio.data
 
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.json.JsonNames
 
 
@@ -9,7 +10,7 @@ data class BasicTextWidgetConfig(
     val url: String? = null,
     val shouldUnderLineUrl: Boolean? = true,
     @JsonNames("config","textConfig") val textConfig: TextConfig = TextConfig(),
-    override val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
+    @EncodeDefault override val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
     override val topPadding: Int = 0,
     override val bottomPadding: Int = 0,
     override val startPadding: Int = 0,

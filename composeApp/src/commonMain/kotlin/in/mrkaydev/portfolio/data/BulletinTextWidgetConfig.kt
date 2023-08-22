@@ -1,5 +1,6 @@
 package `in`.mrkaydev.portfolio.data
 
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.json.JsonNames
 
 
@@ -7,7 +8,7 @@ import kotlinx.serialization.json.JsonNames
 data class BulletinTextWidgetConfig(
     val bulletinText: String = "•",
     @JsonNames("textList","list")val textConfigsList: List<BasicTextWidgetConfig>? = null,
-    override val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
+    @EncodeDefault override val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
     override val topPadding: Int = 0,
     override val bottomPadding: Int = 0,
     override val startPadding: Int = 32,
