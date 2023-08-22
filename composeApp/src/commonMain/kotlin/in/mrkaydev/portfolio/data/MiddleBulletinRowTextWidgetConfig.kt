@@ -10,9 +10,9 @@ data class MiddleBulletinRowTextWidgetConfig(
     @JsonNames("secondText","secondTextWidgetConfig") val secondTextWidgetConfig: BasicTextWidgetConfig? = null,
     @JsonNames("thirdText","thirdTextWidgetConfig") val thirdTextWidgetConfig: BasicTextWidgetConfig? = null,
     @JsonNames("fourthText","fourthTextWidgetConfig") val fourthTextWidgetConfig: BasicTextWidgetConfig? = null,
-    val widgetId: String = Widgets.MiddleBulletinRowTextWidgetId.widgetName,
-    val topPadding: Int = 0,
-    val bottomPadding: Int = 0,
-    val startPadding: Int = 0,
-    val endPadding: Int = 0
-)
+    override val widgetId: String = Widgets.MiddleBulletinRowTextWidgetId.widgetName,
+    override val topPadding: Int = 0,
+    override val bottomPadding: Int = 0,
+    override val startPadding: Int = 0,
+    override val endPadding: Int = 0
+):WidgetConfig

@@ -94,33 +94,33 @@ fun Resume(data: WebsiteData) {
                 )
         ) {
             items(data.resumeDataList?: emptyList()) {
-                when (it["widgetId"]?.jsonPrimitive?.contentOrNull) {
+                when (it.widgetId) {
                     Widgets.BasicTextWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(BasicTextWidgetConfig.serializer(), it)
+                        val config = it as BasicTextWidgetConfig
                         BasicText(config)
                     }
                     Widgets.SpannedTextWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(SpannedTextWidgetConfig.serializer(), it)
+                        val config = it as SpannedTextWidgetConfig
                         SpannedText(config)
                     }
                     Widgets.RowTextWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(RowTextWidgetConfig.serializer(), it)
+                        val config = it as RowTextWidgetConfig
                         RowText(config)
                     }
                     Widgets.DividerWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(DividerWidgetConfig.serializer(), it)
+                        val config = it as DividerWidgetConfig
                         DividerWidget(config)
                     }
                     Widgets.MiddleBulletinRowTextWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(MiddleBulletinRowTextWidgetConfig.serializer(), it)
+                        val config = it as MiddleBulletinRowTextWidgetConfig
                         MiddleBulletinRowText(config)
                     }
                     Widgets.BulletinTextWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(BulletinTextWidgetConfig.serializer(), it)
+                        val config = it as BulletinTextWidgetConfig
                         BulletinText(config)
                     }
                     Widgets.SpacerWidgetId.widgetName -> {
-                        val config = Json.decodeFromJsonElement(SpacerWidgetConfig.serializer(), it)
+                        val config = it as SpacerWidgetConfig
                         config.space?.toDp()?.let { dp ->
                             Spacer(Modifier.height(dp))
                         }

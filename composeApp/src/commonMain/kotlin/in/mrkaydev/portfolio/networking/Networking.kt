@@ -1,11 +1,15 @@
 package `in`.mrkaydev.portfolio.networking
 
+import `in`.mrkaydev.portfolio.data.*
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
+import kotlinx.serialization.modules.subclass
 
 val httpClient = HttpClient {
     expectSuccess = true
@@ -21,9 +25,17 @@ val httpClient = HttpClient {
     }
     install(ContentNegotiation) {
         json(Json {
-            ignoreUnknownKeys = true
-            isLenient = true
-            useArrayPolymorphism = true
+            serializersModule = SerializersModule {
+                polymorphic(WidgetConfig::class) {
+                    subclass(BasicTextWidgetConfig::class)
+                    subclass(BulletinTextWidgetConfig::class)
+                    subclass(DividerWidgetConfig::class)
+                    subclass(MiddleBulletinRowTextWidgetConfig::class)
+                    subclass(RowTextWidgetConfig::class)
+                    subclass(SpacerWidgetConfig::class)
+                    subclass(SpannedTextWidgetConfig::class)
+                }
+            }
         })
     }
 }

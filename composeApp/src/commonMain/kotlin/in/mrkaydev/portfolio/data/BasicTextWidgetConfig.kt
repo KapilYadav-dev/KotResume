@@ -9,12 +9,12 @@ data class BasicTextWidgetConfig(
     val url: String? = null,
     val shouldUnderLineUrl: Boolean? = true,
     @JsonNames("config","textConfig") val textConfig: TextConfig = TextConfig(),
-    val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
-    val topPadding: Int = 0,
-    val bottomPadding: Int = 0,
-    val startPadding: Int = 0,
-    val endPadding: Int = 0
-) {
+    override val widgetId: String = Widgets.BasicTextWidgetId.widgetName,
+    override val topPadding: Int = 0,
+    override val bottomPadding: Int = 0,
+    override val startPadding: Int = 0,
+    override val endPadding: Int = 0
+):WidgetConfig {
     @kotlinx.serialization.Serializable
     data class TextConfig(
         val color: String? = null,

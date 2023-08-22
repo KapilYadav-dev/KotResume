@@ -5,9 +5,9 @@ import kotlinx.serialization.json.JsonNames
 @kotlinx.serialization.Serializable
 data class SpacerWidgetConfig(
  val space:Int?=null,
- @JsonNames("widgetId") val widgetId: String = Widgets.SpacerWidgetId.widgetName,
- val topPadding: Int = 0,
- val bottomPadding: Int = 0,
- val startPadding: Int = 0,
- val endPadding: Int = 0
-)
+ @JsonNames("widgetId") override val widgetId: String = Widgets.SpacerWidgetId.widgetName,
+ override val topPadding: Int = 0,
+ override val bottomPadding: Int = 0,
+ override val startPadding: Int = 0,
+ override val endPadding: Int = 0
+):WidgetConfig

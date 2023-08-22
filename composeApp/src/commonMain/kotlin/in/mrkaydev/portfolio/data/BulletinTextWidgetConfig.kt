@@ -7,9 +7,9 @@ import kotlinx.serialization.json.JsonNames
 data class BulletinTextWidgetConfig(
     val bulletinText: String = "•",
     @JsonNames("textList","list")val textConfigsList: List<BasicTextWidgetConfig>? = null,
-    val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
-    val topPadding: Int = 0,
-    val bottomPadding: Int = 0,
-    val startPadding: Int = 32,
-    val endPadding: Int = 0
-)
+    override val widgetId: String = Widgets.BulletinTextWidgetId.widgetName,
+    override val topPadding: Int = 0,
+    override val bottomPadding: Int = 0,
+    override val startPadding: Int = 32,
+    override val endPadding: Int = 0
+):WidgetConfig
