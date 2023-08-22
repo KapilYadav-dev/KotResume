@@ -13,10 +13,12 @@ fun BulletinText(config: BulletinTextWidgetConfig) {
     config.textConfigsList?.let {
         Column {
             it.forEach { item->
-                Row(modifier = Modifier.fillMaxWidth().padding(start = 32.dp)) {
-                    Text(config.bulletinText)
-                    Spacer(modifier = Modifier.width(16.dp))
-                    BasicText(item)
+                if(item.text?.isNotBlank() ==true || item.text?.isNotEmpty()==true) {
+                    Row(modifier = Modifier.fillMaxWidth().padding(start = 32.dp)) {
+                        Text(config.bulletinText)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        BasicText(item)
+                    }
                 }
             }
         }

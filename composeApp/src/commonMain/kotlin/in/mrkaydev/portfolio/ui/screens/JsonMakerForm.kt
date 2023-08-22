@@ -217,7 +217,7 @@ fun JsonMakerForm() {
         }
 
         Button(
-            onClick = { viewModel.projectList = viewModel.projectList + ProjectData("", listOf()) },
+            onClick = { viewModel.projectList = viewModel.projectList + ProjectData("", "",listOf()) },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(0.5f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(

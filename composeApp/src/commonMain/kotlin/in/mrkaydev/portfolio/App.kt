@@ -78,5 +78,6 @@ internal fun App() {
 
 internal expect fun openUrl(url: String?)
 internal expect fun showAlert(msg: String?)
+internal expect fun writeToClipboard(text: String)
 internal expect fun String.logger()
 internal expect fun getWindowDimen(): Pair<Int, Int>

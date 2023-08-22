@@ -27,41 +27,42 @@ fun BasicText(config: BasicTextWidgetConfig) {
     val clipBoard = LocalClipboardManager.current
     config.apply {
         text?.let {
-            Row {
-                var textLayoutResult: TextLayoutResult? = null
-                Text(
-                    text = it.parseHtml(),
-                    fontWeight = Utils.getFontWeightElseNormal(textConfig.fontWeight),
-                    color = Utils.getColorElseBlack(textConfig.color),
-                    fontSize = textConfig.textSize?.toSp() ?: 14.sp,
-                    fontFamily = FontLoader.Montserrat,
-                    fontStyle = getFontStyleElseNormal(textConfig.fontStyle),
-                    onTextLayout = {
-                        textLayoutResult = it
-                    },
-                    modifier = Modifier.drawBehind {
-                        if (shouldUnderLineUrl == true && url != null) {
-                            textLayoutResult?.size?.width?.toFloat()?.let { it1 ->
-                                Offset(
-                                    it1,
-                                    size.height - 1.dp.toPx()
-                                )
-                            }?.let { it2 ->
-                                drawLine(
-                                    color = Color.Black.copy(alpha = 0.3f),
-                                    start = Offset(0f, size.height - 1.dp.toPx()),
-                                    end = it2,
-                                    strokeWidth = 1.dp.toPx()
-                                )
+            if(it.isNotBlank() || it.isNotEmpty()) {
+                Row {
+                    var textLayoutResult: TextLayoutResult? = null
+                    Text(
+                        text = it.parseHtml(),
+                        fontWeight = Utils.getFontWeightElseNormal(textConfig.fontWeight),
+                        color = Utils.getColorElseBlack(textConfig.color),
+                        fontSize = textConfig.textSize?.toSp() ?: 14.sp,
+                        fontFamily = FontLoader.Montserrat,
+                        fontStyle = getFontStyleElseNormal(textConfig.fontStyle),
+                        onTextLayout = {
+                            textLayoutResult = it
+                        },
+                        modifier = Modifier.drawBehind {
+                            if (shouldUnderLineUrl == true && url != null) {
+                                textLayoutResult?.size?.width?.toFloat()?.let { it1 ->
+                                    Offset(
+                                        it1,
+                                        size.height - 1.dp.toPx()
+                                    )
+                                }?.let { it2 ->
+                                    drawLine(
+                                        color = Color.Black.copy(alpha = 0.3f),
+                                        start = Offset(0f, size.height - 1.dp.toPx()),
+                                        end = it2,
+                                        strokeWidth = 1.dp.toPx()
+                                    )
+                                }
                             }
+                        }.clickable {
+                            clipBoard.setText(AnnotatedString(it))
+                            openUrl(url)
                         }
-                    }.clickable {
-                        clipBoard.setText(AnnotatedString(it))
-                        openUrl(url)
-                    }
-                )
+                    )
+                }
             }
-
         }
     }
 }

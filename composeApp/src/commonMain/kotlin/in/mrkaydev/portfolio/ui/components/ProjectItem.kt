@@ -76,6 +76,7 @@ fun ProjectItem(
 
 data class ProjectData(
     val projectName: String,
+    val projectUrl: String,
     val projectDetails: List<String>
 ) {
     fun isFilled(): Boolean {

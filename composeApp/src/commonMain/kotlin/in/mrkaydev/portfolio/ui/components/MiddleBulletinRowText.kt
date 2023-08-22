@@ -11,16 +11,18 @@ import `in`.mrkaydev.portfolio.data.MiddleBulletinRowTextWidgetConfig
 fun MiddleBulletinRowText(config: MiddleBulletinRowTextWidgetConfig) {
     config.apply {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Text(bulletinText)
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    config.firstTextWidgetConfig?.let { BasicText(it) }
-                    config.secondTextWidgetConfig?.let { BasicText(it) }
-                }
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    config.thirdTextWidgetConfig?.let { BasicText(it) }
-                    config.fourthTextWidgetConfig?.let { BasicText(it) }
+            if(config.firstTextWidgetConfig?.text?.isNotBlank()==true || config.firstTextWidgetConfig?.text?.isNotEmpty()==true) {
+                Text(bulletinText)
+                Spacer(modifier = Modifier.width(16.dp))
+                Column {
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        config.firstTextWidgetConfig?.let { BasicText(it) }
+                        config.secondTextWidgetConfig?.let { BasicText(it) }
+                    }
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        config.thirdTextWidgetConfig?.let { BasicText(it) }
+                        config.fourthTextWidgetConfig?.let { BasicText(it) }
+                    }
                 }
             }
         }
