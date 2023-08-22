@@ -40,6 +40,14 @@ fun ExperienceItem(
         )
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
+            value = experience.location,
+            textStyle = fontStyle,
+            modifier = Modifier.fillMaxSize(),
+            onValueChange = { onExperienceChange(experience.copy(location = it)) },
+            label = { Text("Location", fontFamily = font) }, colors = getOutlineTextFieldColors()
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
             value = experience.time,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
@@ -95,9 +103,10 @@ data class ExperienceData(
     val companyName: String,
     val position: String,
     val time: String,
+    val location: String,
     val responsibilities: List<String>
 ) {
     fun isFilled(): Boolean {
-        return companyName.isNotEmpty() && position.isNotEmpty() && time.isNotEmpty()
+        return companyName.isNotEmpty() && position.isNotEmpty() && time.isNotEmpty() && location.isNotEmpty()
     }
 }

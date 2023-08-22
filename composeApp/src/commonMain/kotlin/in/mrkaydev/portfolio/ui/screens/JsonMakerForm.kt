@@ -65,7 +65,7 @@ fun JsonMakerForm() {
             label = { Text("Name", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = viewModel.email,
             textStyle = fontStyle,
@@ -74,7 +74,7 @@ fun JsonMakerForm() {
             label = { Text("Email", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = viewModel.mobile,
             textStyle = fontStyle,
@@ -83,13 +83,22 @@ fun JsonMakerForm() {
             label = { Text("Mobile", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = viewModel.links,
             textStyle = fontStyle,
             modifier = Modifier.fillMaxSize(),
             onValueChange = { viewModel.links = it },
             label = { Text("Links", fontFamily = font) },
+            colors = getOutlineTextFieldColors()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        OutlinedTextField(
+            value = viewModel.resumeUrl,
+            textStyle = fontStyle,
+            modifier = Modifier.fillMaxSize(),
+            onValueChange = { viewModel.resumeUrl = it },
+            label = { Text("Resume URL", fontFamily = font) },
             colors = getOutlineTextFieldColors()
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -178,7 +187,7 @@ fun JsonMakerForm() {
             Spacer(modifier = Modifier.height(16.dp))
         }
         Button(
-            onClick = { viewModel.experienceList = viewModel.experienceList + ExperienceData("", "", "", listOf("")) },
+            onClick = { viewModel.experienceList = viewModel.experienceList + ExperienceData("", "", "", "",listOf("")) },
             modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(0.5f)
                 .height(64.dp),
             colors = ButtonDefaults.buttonColors(

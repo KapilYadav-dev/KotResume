@@ -23,6 +23,7 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
     val uiState: StateFlow<UiState> get() = _uiState
     var name by mutableStateOf("")
     var githubUrl by mutableStateOf("")
+    var resumeUrl by mutableStateOf("")
     var email by mutableStateOf("")
     var mobile by mutableStateOf("")
     var links by mutableStateOf("")
@@ -32,7 +33,7 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
 
 
     var educationList by mutableStateOf(listOf(EducationData("", "", "", "")))
-    var experienceList by mutableStateOf(listOf(ExperienceData("", "", "", listOf(""))))
+    var experienceList by mutableStateOf(listOf(ExperienceData("", "", "","", listOf(""))))
     var projectList by mutableStateOf(listOf(ProjectData("", listOf(""))))
 
     var addEducationButtonEnabled by mutableStateOf(false)

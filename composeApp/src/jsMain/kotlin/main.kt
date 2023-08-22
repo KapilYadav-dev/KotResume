@@ -1,6 +1,7 @@
 import app.softwork.routingcompose.HashRouter
 import `in`.mrkaydev.portfolio.App
 import `in`.mrkaydev.portfolio.ui.screens.JsonMakerForm
+import `in`.mrkaydev.portfolio.ui.screens.LiveResumeEditor
 import org.jetbrains.skiko.wasm.onWasmReady
 
 fun main() {
@@ -15,6 +16,12 @@ fun main() {
                 }
                 route("/json") {
                     JsonMakerForm()
+                }
+                route("/liveJson") {
+                    LiveResumeEditor()
+                }
+                route("/livejson") {
+                    LiveResumeEditor()
                 }
             }
         }
