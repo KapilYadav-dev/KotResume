@@ -27,12 +27,9 @@ import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.ui.components.*
 import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils.toDp
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.jsonPrimitive
 
 @Composable
-fun Resume(data: WebsiteData) {
+fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean={false}) {
     val width = getWindowDimen().first
     val height = getWindowDimen().second
     val state = rememberLazyListState()
@@ -88,7 +85,7 @@ fun Resume(data: WebsiteData) {
             }
         }
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(ratio).fillMaxHeight().background(Color.White)
+            modifier = Modifier.fillMaxWidth(if(shouldTakeFullScreen()==true) 1.0f else ratio).fillMaxHeight().background(Color.White)
                 .padding(start = 32.dp, end = 32.dp, top = 80.dp, bottom = 32.dp).align(
                     Alignment.Center
                 )
