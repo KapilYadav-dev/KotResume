@@ -47,19 +47,7 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
 
 
     init {
-        loadFonts()
-    }
-
-
-    private fun loadFonts() {
-        viewModelScope.launch(Dispatchers.Default) {
-            kotlin.runCatching {
-                viewModelScope.launch {
-                    async { FontLoader.loadFonts() }.await()
-                    fetchJson()
-                }
-            }
-        }
+        fetchJson()
     }
 
     private fun fetchJson() {
@@ -67,6 +55,9 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
             kotlin.runCatching {
                 _uiState.emit(UiState.Loading)
                 val data = httpClient.get(Utils.RESUME_JSON_URL).body<WebsiteData>()
+                withContext(Dispatchers.Default) {
+                    FontLoader.loadFonts()
+                }
                 _uiState.emit(UiState.JsonDataSuccess(data))
             }.onFailure {
                 _uiState.emit(UiState.Error("Error occurred : ${it.message}"))
@@ -77,8 +68,8 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
     fun makeJson() {
         viewModelScope.launch(Dispatchers.Default) {
             val widgetsList = mutableListOf<WidgetConfig>()
-            var jsonString: String?=null
-            async {
+            var jsonString: String? = null
+            withContext(Dispatchers.Default) {
                 widgetsList.add(
                     RowTextWidgetConfig(
                         firstTextWidgetConfig = BasicTextWidgetConfig(
@@ -340,7 +331,7 @@ class ViewModel : dev.icerock.moko.mvvm.viewmodel.ViewModel() {
                     resumeDataList = widgetsList
                 )
                 jsonString = Json.encodeToString(data)
-            }.await()
+            }
             jsonString?.let {
                 writeToClipboard(it)
             }

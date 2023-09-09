@@ -76,8 +76,10 @@ internal fun App() {
     }
 }
 
+internal expect fun enterFullScreen()
+internal expect fun exitFullScreen()
 internal expect fun openUrl(url: String?)
 internal expect fun showAlert(msg: String?)
-internal expect fun writeToClipboard(text: String)
-internal expect fun String.logger()
+internal expect fun writeToClipboard(text: String?)
+internal expect fun log(msg: String?)
 internal expect fun getWindowDimen(): Pair<Int, Int>

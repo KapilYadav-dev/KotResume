@@ -10,6 +10,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,7 +25,10 @@ import compose.icons.FeatherIcons
 import compose.icons.feathericons.Download
 import compose.icons.feathericons.Github
 import compose.icons.feathericons.Menu
+import compose.icons.feathericons.Square
 import `in`.mrkaydev.portfolio.data.*
+import `in`.mrkaydev.portfolio.enterFullScreen
+import `in`.mrkaydev.portfolio.exitFullScreen
 import `in`.mrkaydev.portfolio.getWindowDimen
 import `in`.mrkaydev.portfolio.openUrl
 import `in`.mrkaydev.portfolio.ui.components.*
@@ -29,10 +36,12 @@ import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils.toDp
 
 @Composable
-fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean={false}) {
+fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean = { false }) {
+
     val width = getWindowDimen().first
     val height = getWindowDimen().second
     val state = rememberLazyListState()
+    var isFullScreen by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         state.scrollToItem(0)
@@ -82,46 +91,63 @@ fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean={false}) {
                         tint = Color.White
                     )
                 }
+                Icon(
+                    imageVector = FeatherIcons.Square,
+                    contentDescription = "",
+                    modifier = Modifier.padding(horizontal = 32.dp).size(if (isFullScreen) 16.dp else 28.dp)
+                        .clickable {
+                            isFullScreen = !isFullScreen
+                            if (isFullScreen) enterFullScreen() else exitFullScreen()
+                        },
+                    tint = Color.White
+                )
             }
         }
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(if(shouldTakeFullScreen()==true) 1.0f else ratio).fillMaxHeight().background(Color.White)
+            modifier = Modifier.fillMaxWidth(if (shouldTakeFullScreen()) 1.0f else ratio).fillMaxHeight().background(Color.White)
                 .padding(start = 32.dp, end = 32.dp, top = 80.dp, bottom = 32.dp).align(
                     Alignment.Center
                 )
         ) {
-            items(data.resumeDataList?: emptyList()) {
+            items(data.resumeDataList ?: emptyList()) {
                 when (it.widgetId) {
                     Widgets.BasicTextWidgetId.widgetName -> {
                         val config = it as BasicTextWidgetConfig
                         BasicText(config)
                     }
+
                     Widgets.SpannedTextWidgetId.widgetName -> {
                         val config = it as SpannedTextWidgetConfig
                         SpannedText(config)
                     }
+
                     Widgets.RowTextWidgetId.widgetName -> {
                         val config = it as RowTextWidgetConfig
                         RowText(config)
                     }
+
                     Widgets.DividerWidgetId.widgetName -> {
                         val config = it as DividerWidgetConfig
                         DividerWidget(config)
                     }
+
                     Widgets.MiddleBulletinRowTextWidgetId.widgetName -> {
                         val config = it as MiddleBulletinRowTextWidgetConfig
                         MiddleBulletinRowText(config)
                     }
+
                     Widgets.BulletinTextWidgetId.widgetName -> {
                         val config = it as BulletinTextWidgetConfig
                         BulletinText(config)
                     }
+
                     Widgets.SpacerWidgetId.widgetName -> {
                         val config = it as SpacerWidgetConfig
                         config.space?.toDp()?.let { dp ->
                             Spacer(Modifier.height(dp))
                         }
                     }
+
                     else -> {}
                 }
             }
