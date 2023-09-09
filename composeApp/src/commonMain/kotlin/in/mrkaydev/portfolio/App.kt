@@ -67,7 +67,7 @@ internal fun App() {
         is UiState.JsonDataSuccess -> {
             val data = (uiState as UiState.JsonDataSuccess).data
             AppTheme {
-                Resume(data)
+                Resume(data, isInEditor = {false})
             }
         }
         UiState.Initial -> {

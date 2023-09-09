@@ -2,7 +2,16 @@ package `in`.mrkaydev.portfolio.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -21,23 +30,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import app.softwork.routingcompose.Router
 import compose.icons.FeatherIcons
+import compose.icons.feathericons.Code
 import compose.icons.feathericons.Download
+import compose.icons.feathericons.Edit
 import compose.icons.feathericons.Github
 import compose.icons.feathericons.Menu
-import compose.icons.feathericons.Square
-import `in`.mrkaydev.portfolio.data.*
-import `in`.mrkaydev.portfolio.enterFullScreen
-import `in`.mrkaydev.portfolio.exitFullScreen
+import `in`.mrkaydev.portfolio.data.BasicTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.BulletinTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.DividerWidgetConfig
+import `in`.mrkaydev.portfolio.data.MiddleBulletinRowTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.RowTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.SpacerWidgetConfig
+import `in`.mrkaydev.portfolio.data.SpannedTextWidgetConfig
+import `in`.mrkaydev.portfolio.data.WebsiteData
+import `in`.mrkaydev.portfolio.data.Widgets
 import `in`.mrkaydev.portfolio.getWindowDimen
 import `in`.mrkaydev.portfolio.openUrl
-import `in`.mrkaydev.portfolio.ui.components.*
+import `in`.mrkaydev.portfolio.ui.components.BasicText
+import `in`.mrkaydev.portfolio.ui.components.BulletinText
+import `in`.mrkaydev.portfolio.ui.components.DividerWidget
+import `in`.mrkaydev.portfolio.ui.components.MiddleBulletinRowText
+import `in`.mrkaydev.portfolio.ui.components.RowText
+import `in`.mrkaydev.portfolio.ui.components.SpannedText
 import `in`.mrkaydev.portfolio.utils.FontLoader
 import `in`.mrkaydev.portfolio.utils.Utils.toDp
 
 @Composable
-fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean = { false }) {
-
+fun Resume(data: WebsiteData, isInEditor: () -> Boolean = { false }) {
+    val router = Router.current
     val width = getWindowDimen().first
     val height = getWindowDimen().second
     val state = rememberLazyListState()
@@ -73,6 +95,22 @@ fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean = { false }) {
                 }
             }
             Row {
+                if(!isInEditor()) {
+                    Icon(
+                        imageVector = FeatherIcons.Edit,
+                        contentDescription = "",
+                        modifier = Modifier.padding(horizontal = 32.dp).size(24.dp)
+                            .clickable { router.navigate("liveJson") },
+                        tint = Color.White
+                    )
+                    Icon(
+                        imageVector = FeatherIcons.Code,
+                        contentDescription = "",
+                        modifier = Modifier.padding(horizontal = 32.dp).size(24.dp)
+                            .clickable { router.navigate("json") },
+                        tint = Color.White
+                    )
+                }
                 data.githubUrl?.let {
                     Icon(
                         imageVector = FeatherIcons.Github,
@@ -91,20 +129,10 @@ fun Resume(data: WebsiteData, shouldTakeFullScreen: () -> Boolean = { false }) {
                         tint = Color.White
                     )
                 }
-                Icon(
-                    imageVector = FeatherIcons.Square,
-                    contentDescription = "",
-                    modifier = Modifier.padding(horizontal = 32.dp).size(if (isFullScreen) 16.dp else 28.dp)
-                        .clickable {
-                            isFullScreen = !isFullScreen
-                            if (isFullScreen) enterFullScreen() else exitFullScreen()
-                        },
-                    tint = Color.White
-                )
             }
         }
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(if (shouldTakeFullScreen()) 1.0f else ratio).fillMaxHeight().background(Color.White)
+            modifier = Modifier.fillMaxWidth(if (isInEditor()) 1.0f else ratio ).fillMaxHeight().background(Color.White)
                 .padding(start = 32.dp, end = 32.dp, top = 80.dp, bottom = 32.dp).align(
                     Alignment.Center
                 )
