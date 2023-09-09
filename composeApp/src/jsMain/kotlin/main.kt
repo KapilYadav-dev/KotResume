@@ -1,13 +1,16 @@
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.CanvasBasedWindow
 import app.softwork.routingcompose.HashRouter
 import `in`.mrkaydev.portfolio.App
 import `in`.mrkaydev.portfolio.ui.screens.JsonMakerForm
 import `in`.mrkaydev.portfolio.ui.screens.LiveResumeEditor
 import org.jetbrains.skiko.wasm.onWasmReady
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     onWasmReady {
-        BrowserViewportWindow("Portfolio") {
-            HashRouter(initPath = "/") { // or BrowserRouter(initPath = "/hello") {
+        CanvasBasedWindow("Portfolio") {
+            HashRouter(initPath = "/") {
                 route("/") {
                     App()
                 }
